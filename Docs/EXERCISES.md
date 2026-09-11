@@ -11,19 +11,42 @@ VisualStudioCodeにはインテリセンス(コード補完)という機能が�
 今回は課題を解くために自力でコードを考えて欲しいため、下記の手順を参考に、この機能を無効にしておいてください。
 
 手順1:  
-メニューバーから Code \> 基本設定 \> 設定 を開く (ショートカット: Windows: Ctrl+, Mac: ⌘+,) ![alt text]()![][image1]
+メニューバーから Code \> 基本設定 \> 設定 を開く (ショートカット: Windows: Ctrl+, Mac: ⌘+,) 
+
+![][image1]
 
 手順2:  
 検索バーにEditor: Quick Suggestionsと入力する  
+
 ![][image2]  
+
 手順3:  
-各項目の値をすべてoffにする ![alt text]()
+各項目の値をすべてoffにする
 
 手順4:  
 検索バーにEditor: Suggest On Trigger Charactersと入力する
 
 手順5:  
-Suggest On Trigger Charactersのチェックをはずす ![alt text]()![][image3]
+Suggest On Trigger Charactersのチェックをはずす 
+
+![][image3]
+
+
+※もしもQuick Suggestionsの設定項目が出ない場合。
+手順1:  
+項目内にある 「Edit in settings.json」 （または「settings.json で編集」）という青いテキストリンクをクリックします。
+
+手順2:  
+開いた settings.json の中に、以下の記述を追加（または既存の箇所を修正）してください。
+
+```json
+"editor.quickSuggestions": {
+    "other": "on",
+    "comments": "on",
+    "strings": "on"
+}
+```
+
 
 以上で無効化は完了です！
 
