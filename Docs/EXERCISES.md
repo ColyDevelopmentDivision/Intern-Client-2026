@@ -41,9 +41,9 @@ Suggest On Trigger Charactersのチェックをはずす
 
 ```json
 "editor.quickSuggestions": {
-    "other": "on",
-    "comments": "on",
-    "strings": "on"
+    "other": "off",
+    "comments": "off",
+    "strings": "off"
 }
 ```
 
