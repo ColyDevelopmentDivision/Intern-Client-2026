@@ -170,7 +170,8 @@ namespace GachaWorkshop
 
                 if (item.rarity >= Rarity.SR)
                 {
-                    yield return effects.PlayOmen();
+                    int pattern = Random.Range(0, 3);
+                    yield return effects.PlayOmen(pattern);
                 }
 
                 ShowCard(item, result.isNew);   // カードを表示（用意済み）
