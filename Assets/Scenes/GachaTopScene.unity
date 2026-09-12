@@ -151,6 +151,7 @@ MonoBehaviour:
   gachaTables:
   - {fileID: 11400000, guid: 84fa028f6e96d744db7eacf4ff6f8f0a, type: 2}
   - {fileID: 11400000, guid: a9d5febe4bc7a0c41b9c70eb07fd6fae, type: 2}
+  - {fileID: 11400000, guid: a9d5febe4bc7a0c41b9c70eb07fd6fae, type: 2}
   bannerRoot: {fileID: 1959350966}
   bannerTemplate: {fileID: 1517831285}
   gemCountText: {fileID: 1193760278}
@@ -405,6 +406,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
+  m_UseReflectionProbes: 0
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
