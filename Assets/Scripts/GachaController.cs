@@ -168,6 +168,10 @@ namespace GachaWorkshop
                 //   詰まったらヒント集（Docs/HINTS.md）を見てください。
                 // ───────────────────────────────────────────────
 
+                if (result.itemId == 2001 || result.itemId == 2002) {
+                    yield return effects.PlayOmen();
+                }
+
                 ShowCard(item, result.isNew);   // カードを表示（用意済み）
                 PlayResultEffect(item.rarity);  // レアリティに合わせた演出（TODO①はこの中）
                 AddSummaryIcon(item);           // 履歴に小さく追加（用意済み）
