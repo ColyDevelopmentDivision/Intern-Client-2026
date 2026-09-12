@@ -168,6 +168,11 @@ namespace GachaWorkshop
                 //   詰まったらヒント集（Docs/HINTS.md）を見てください。
                 // ───────────────────────────────────────────────
 
+                if (item.rarity>=Rarity.SR)
+                {
+                    int pattern=Random.Range(0,3);
+                    yield return effects.PlayOmen(pattern);
+                }
                 ShowCard(item, result.isNew);   // カードを表示（用意済み）
                 PlayResultEffect(item.rarity);  // レアリティに合わせた演出（TODO①はこの中）
                 AddSummaryIcon(item);           // 履歴に小さく追加（用意済み）
@@ -212,6 +217,22 @@ namespace GachaWorkshop
             //   問題文は課題シート（Docs/EXERCISES.md）、
             //   詰まったらヒント集（Docs/HINTS.md）を見てください。
             // ───────────────────────────────────────────────
+
+            switch(rarity)
+            {
+                case Rarity.SSR:
+                    effects.PlaySpecial();
+                    break;
+                case Rarity.SR:
+                    effects.PlayRare();
+                    break;
+                case Rarity.R:
+                    effects.PlayCommon();
+                    break;
+
+
+
+            }
 
             effects.PlayCommon(); // ← いまは全部これで演出を発生させている状態。まずはここを書き換えよう
         }
