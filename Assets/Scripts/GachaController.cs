@@ -213,7 +213,21 @@ namespace GachaWorkshop
             //   詰まったらヒント集（Docs/HINTS.md）を見てください。
             // ───────────────────────────────────────────────
 
-            effects.PlayCommon(); // ← いまは全部これで演出を発生させている状態。まずはここを書き換えよう
+           // String str = "Rarity.R";
+           switch (rarity)
+           {
+                case Rarity.R:
+                    effects.PlayCommon();
+                    break;
+                case Rarity.SR:
+                    effects.PlayRare();
+                    break;
+                case Rarity.SSR:
+                    effects.PlaySpecial();
+                    break;
+            
+           }
+           // effects.PlayCommon(); // ← いまは全部これで演出を発生させている状態。まずはここを書き換えよう
         }
 
         // ──────────── ここから下は表示まわり（用意済み・編集不要）────────────
