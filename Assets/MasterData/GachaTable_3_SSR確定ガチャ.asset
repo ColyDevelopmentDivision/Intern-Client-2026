@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8a120e6278e084448814bb1755615e4, type: 3}
+  m_Name: "GachaTable_3_SSR\u78BA\u5B9A\u30AB\u3099\u30C1\u30E3"
+  m_EditorClassIdentifier: Assembly-CSharp::GachaWorkshop.GachaTable
+  gachaId: 3
+  gachaName: "SSR\u78BA\u5B9A\u30AC\u30C1\u30E3"
+  costItemId: 1001
+  costAmount: 1200
+  startAt: 2026-01-01 00:00:00
+  endAt: 2099-12-31 23:59:59
+  entries:
+  - itemId: 0
+    weight: 0
+  - itemId: 0
+    weight: 0
+  - itemId: 0
+    weight: 0
+  - itemId: 0
+    weight: 0
+  - itemId: 0
+    weight: 0
+  - itemId: 0
+    weight: 0
+  - itemId: 0
+    weight: 0
+  - itemId: 0
+    weight: 0
+  - itemId: 0
+    weight: 0
+  - itemId: 0
+    weight: 0
