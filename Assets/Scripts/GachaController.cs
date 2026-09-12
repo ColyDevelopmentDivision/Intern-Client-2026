@@ -2,6 +2,7 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 namespace GachaWorkshop
 {
@@ -167,9 +168,19 @@ namespace GachaWorkshop
                 //   問題文は課題シート（Docs/EXERCISES.md）、
                 //   詰まったらヒント集（Docs/HINTS.md）を見てください。
                 // ───────────────────────────────────────────────
+            
+                int effectnum = UnityEngine.Random.Range(0, 100);
 
                 if (result.itemId == 2001 || result.itemId == 2002) {
-                    yield return effects.PlayOmen();
+                    if (effectnum <= 60) {
+                        yield return effects.PlayOmen(0);
+                    }
+                    else if (60 < effectnum && effectnum <= 80) {
+                        yield return effects.PlayOmen(1);
+                    }
+                    else {
+                        yield return effects.PlayOmen(2);
+                    }
                 }
 
                 ShowCard(item, result.isNew);   // カードを表示（用意済み）
