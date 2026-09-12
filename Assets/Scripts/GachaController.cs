@@ -168,8 +168,29 @@ namespace GachaWorkshop
                 //   詰まったらヒント集（Docs/HINTS.md）を見てください。
                 // ───────────────────────────────────────────────
 
+                if(item.rarity >= Rarity.SR)
+                {
+                    yield return effects.PlayOmen(1);
+                }
+
                 ShowCard(item, result.isNew);   // カードを表示（用意済み）
                 PlayResultEffect(item.rarity);  // レアリティに合わせた演出（TODO①はこの中）
+
+                switch (item.rarity)
+                {
+                 case Rarity.SSR:
+                 effects.PlaySpecial();
+                 break;
+                 case Rarity.SR:
+                 effects.PlayRare();
+                 // ここで中くらいの演出を呼ぶ
+                 break;
+                 default: // どれでもない＝R
+                 effects.PlayCommon();
+                 // ここで控えめな演出を呼ぶ
+                 break;
+                }
+
                 AddSummaryIcon(item);           // 履歴に小さく追加（用意済み）
 
                 yield return WaitForTap();      // 画面タップで次のカードへ（編集不要）
@@ -211,23 +232,8 @@ namespace GachaWorkshop
             // TODO ①：レアリティごとに演出を出し分けよう。
             //   問題文は課題シート（Docs/EXERCISES.md）、
             //   詰まったらヒント集（Docs/HINTS.md）を見てください。
-            // ───────────────────────────────────────────────
+            // ──────────────────────────────────────────────
 
-        
-            switch (rarity)
-            {
-                case Rarity.SSR:
-                effects.PlaySpecial();
-                break;
-                case Rarity.SR:
-                effects.PlayRare();
-                // ここで中くらいの演出を呼ぶ
-                break;
-                default: // どれでもない＝R
-                effects.PlayCommon();
-                // ここで控えめな演出を呼ぶ
-                break;
-            }
         }
             
 
