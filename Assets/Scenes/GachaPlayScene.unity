@@ -24911,6 +24911,7 @@ MonoBehaviour:
   effects: {fileID: 895008119}
   resultSource: 0
   serverUrl: http://localhost:5109
+  userId: 0
   firstDelay: 0.4
   tapGuardDelay: 0.25
 --- !u!4 &370493809
@@ -124810,6 +124811,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
+  m_UseReflectionProbes: 0
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0

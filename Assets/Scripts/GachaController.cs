@@ -36,6 +36,9 @@ namespace GachaWorkshop
         [Header("演出（用意済み）")]
         [SerializeField] private GachaEffects effects;
 
+
+
+
         [Header("結果の取得元（用意済み。午後のサーバー会で Server に切り替える）")]
         [Tooltip("ClientFixed=テーブルの登録順の固定結果（今日のクライアント会）／Server=サーバーAPIから取得")]
         [SerializeField] private GachaResultSource resultSource = GachaResultSource.ClientFixed;
@@ -213,9 +216,23 @@ namespace GachaWorkshop
             //   詰まったらヒント集（Docs/HINTS.md）を見てください。
             // ───────────────────────────────────────────────
 
-            effects.PlayCommon(); // ← いまは全部これで演出を発生させている状態。まずはここを書き換えよう
-        }
+             
+switch (rarity)
+{
+    case Rarity.SSR:
+        effects.PlaySpecial();
+        break;
 
+    case Rarity.SR:
+        effects.PlayRare();
+        break;
+
+    default :
+        effects.PlayCommon();
+        break;
+}
+
+        }
         // ──────────── ここから下は表示まわり（用意済み・編集不要）────────────
 
         private void ShowCard(ItemMaster.Entry item, bool isNew)
