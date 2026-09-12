@@ -162,6 +162,17 @@ namespace GachaWorkshop
 
                 // ───────────────────────────────────────────────
                 // TODO ②：レアが出る直前の「予兆」で“溜め”を作ろう。（書く場所はここ）
+                if (item.rarity == Rarity.SSR)
+                {
+                    yield return effects.PlayOmen(0);
+                }
+                else if (item.rarity == Rarity.SR)
+                {
+                    yield return effects.PlayOmen(1);
+                }
+                else {
+                    yield return effects.PlayOmen(2);
+                }
                 // TODO ③（TODO②ができたら）：予兆の色をランダムにしよう。
                 //   （TODO②で書いた処理を書き換える）
                 //   問題文は課題シート（Docs/EXERCISES.md）、
@@ -214,6 +225,8 @@ namespace GachaWorkshop
             // ───────────────────────────────────────────────
 
             effects.PlayCommon(); // ← いまは全部これで演出を発生させている状態。まずはここを書き換えよう
+            effects.PlayRare();
+            effects.PlaySpecial();
         }
 
         // ──────────── ここから下は表示まわり（用意済み・編集不要）────────────
