@@ -167,6 +167,11 @@ namespace GachaWorkshop
                 //   問題文は課題シート（Docs/EXERCISES.md）、
                 //   詰まったらヒント集（Docs/HINTS.md）を見てください。
                 // ───────────────────────────────────────────────
+if (item.rarity == Rarity.SSR || item.rarity == Rarity.SR)
+{
+    int omenPattern = Random.Range(0, 3); // 0, 1, 2 のどれかをランダムに選ぶ
+    yield return effects.PlayOmen(omenPattern);
+}
 
                 ShowCard(item, result.isNew);   // カードを表示（用意済み）
                 PlayResultEffect(item.rarity);  // レアリティに合わせた演出（TODO①はこの中）
@@ -213,7 +218,21 @@ namespace GachaWorkshop
             //   詰まったらヒント集（Docs/HINTS.md）を見てください。
             // ───────────────────────────────────────────────
 
-            effects.PlayCommon(); // ← いまは全部これで演出を発生させている状態。まずはここを書き換えよう
+ switch (rarity)
+    {
+        case Rarity.SSR:
+            effects.PlaySpecial();
+            break;
+        case Rarity.SR:
+            effects.PlayRare();
+            break;
+        case Rarity.R:
+            effects.PlayCommon();
+            break;
+        default:
+            effects.PlayCommon();
+            break;
+    }   
         }
 
         // ──────────── ここから下は表示まわり（用意済み・編集不要）────────────
