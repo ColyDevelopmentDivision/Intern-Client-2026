@@ -168,12 +168,17 @@ namespace GachaWorkshop
                 //   詰まったらヒント集（Docs/HINTS.md）を見てください。
                 // ───────────────────────────────────────────────
 
-                ShowCard(item, result.isNew);   // カードを表示（用意済み）
-                PlayResultEffect(item.rarity);  // レアリティに合わせた演出（TODO①はこの中）
-                AddSummaryIcon(item);           // 履歴に小さく追加（用意済み）
 
-                yield return WaitForTap();      // 画面タップで次のカードへ（編集不要）
+                ShowCard(item, result.isNew);
+                PlayResultEffect(item.rarity);
+                AddSummaryIcon(item);
+
+                if (item.rarity >= Rarity.SSR)
+                {
+                   yield return effects.PlayOmen();
+                }
             }
+            yield return WaitForTap(); 
 
             _revealCoroutine = null;
             _revealingResponse = null;
@@ -212,8 +217,21 @@ namespace GachaWorkshop
             //   問題文は課題シート（Docs/EXERCISES.md）、
             //   詰まったらヒント集（Docs/HINTS.md）を見てください。
             // ───────────────────────────────────────────────
+switch(rarity)
+{
+    case Rarity.SSR:
+    effects.PlaySpecial();
+    break;
+    case Rarity.SR:
+    effects.PlayRare();
+    break;
+    default:
+    effects.PlayCommon();
+    break;
 
-            effects.PlayCommon(); // ← いまは全部これで演出を発生させている状態。まずはここを書き換えよう
+}
+
+             // ← いまは全部これで演出を発生させている状態。まずはここを書き換えよう
         }
 
         // ──────────── ここから下は表示まわり（用意済み・編集不要）────────────
