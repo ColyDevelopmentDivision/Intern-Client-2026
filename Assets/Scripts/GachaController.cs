@@ -160,6 +160,11 @@ namespace GachaWorkshop
                 }
                 isFirstCard = false;
 
+                if (item.rarity >= Rarity.SSR )
+                {
+                    yield return effects.PlayOmen();
+                }
+
                 // ───────────────────────────────────────────────
                 // TODO ②：レアが出る直前の「予兆」で“溜め”を作ろう。（書く場所はここ）
                 // TODO ③（TODO②ができたら）：予兆の色をランダムにしよう。
@@ -207,6 +212,20 @@ namespace GachaWorkshop
         /// </summary>
         private void PlayResultEffect(Rarity rarity)
         {
+            switch (rarity)
+        {
+            case Rarity.SSR:
+                effects.PlaySpecial();
+                break;
+            case Rarity.SR:
+                effects.PlayRare();
+                break;
+            default:
+                effects.PlayCommon(); 
+                break;
+        }
+
+
             // ───────────────────────────────────────────────
             // TODO ①：レアリティごとに演出を出し分けよう。
             //   問題文は課題シート（Docs/EXERCISES.md）、
