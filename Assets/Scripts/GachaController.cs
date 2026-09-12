@@ -168,6 +168,11 @@ namespace GachaWorkshop
                 //   詰まったらヒント集（Docs/HINTS.md）を見てください。
                 // ───────────────────────────────────────────────
 
+                int YochoEffectNum = Random.Range(0, 3);
+                if (item.rarity >= Rarity.SR)
+                {
+                    yield return effects.PlayOmen(YochoEffectNum);    //「予兆」の演出（追加）
+                }
                 ShowCard(item, result.isNew);   // カードを表示（用意済み）
                 PlayResultEffect(item.rarity);  // レアリティに合わせた演出（TODO①はこの中）
                 AddSummaryIcon(item);           // 履歴に小さく追加（用意済み）
@@ -212,8 +217,18 @@ namespace GachaWorkshop
             //   問題文は課題シート（Docs/EXERCISES.md）、
             //   詰まったらヒント集（Docs/HINTS.md）を見てください。
             // ───────────────────────────────────────────────
-
-            effects.PlayCommon(); // ← いまは全部これで演出を発生させている状態。まずはここを書き換えよう
+            if (rarity == Rarity.R)
+            {
+                effects.PlayCommon();
+            }
+            else if (rarity == Rarity.SR)
+            {
+                effects.PlayRare();
+            }
+            else
+            {
+                effects.PlaySpecial();
+            }
         }
 
         // ──────────── ここから下は表示まわり（用意済み・編集不要）────────────
