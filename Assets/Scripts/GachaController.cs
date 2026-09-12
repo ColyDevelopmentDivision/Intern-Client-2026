@@ -168,6 +168,11 @@ namespace GachaWorkshop
                 //   詰まったらヒント集（Docs/HINTS.md）を見てください。
                 // ───────────────────────────────────────────────
 
+                
+                int effect_color = Random.Range(0, 3);
+                if (item.rarity > 0)
+                    yield return effects.PlayOmen(effect_color);
+
                 ShowCard(item, result.isNew);   // カードを表示（用意済み）
                 PlayResultEffect(item.rarity);  // レアリティに合わせた演出（TODO①はこの中）
                 AddSummaryIcon(item);           // 履歴に小さく追加（用意済み）
@@ -186,7 +191,7 @@ namespace GachaWorkshop
         {
             yield return new WaitForSeconds(tapGuardDelay); // 表示直後の連打で飛びすぎるのを防ぐ小休止
             while (!WasTapThisFrame())
-            {
+            { 
                 yield return null;
             }
         }
