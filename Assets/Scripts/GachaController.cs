@@ -212,9 +212,26 @@ namespace GachaWorkshop
             //   問題文は課題シート（Docs/EXERCISES.md）、
             //   詰まったらヒント集（Docs/HINTS.md）を見てください。
             // ───────────────────────────────────────────────
+            switch (rarity)
+            {
+                case Rarity.R:
+                    effects.PlayCommon();
+                    break;
+            
+            
+                case Rarity.SR:
+                    effects.PlayRare();
+                    break;
+                
 
-            effects.PlayCommon(); // ← いまは全部これで演出を発生させている状態。まずはここを書き換えよう
+            }
+            
+
+
+
         }
+
+
 
         // ──────────── ここから下は表示まわり（用意済み・編集不要）────────────
 
