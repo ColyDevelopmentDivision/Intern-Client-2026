@@ -146,6 +146,7 @@ namespace GachaWorkshop
             bool isFirstCard = true;
             foreach (GachaDrawResult result in response.results)
             {
+            
                 // 結果は itemId だけなので、表示に使う名前・画像はマスタ（ItemMaster）から引く
                 ItemMaster.Entry item = itemMaster.FindById(result.itemId);
                 if (item == null)
@@ -160,6 +161,7 @@ namespace GachaWorkshop
                 }
                 isFirstCard = false;
 
+
                 // ───────────────────────────────────────────────
                 // TODO ②：レアが出る直前の「予兆」で“溜め”を作ろう。（書く場所はここ）
                 // TODO ③（TODO②ができたら）：予兆の色をランダムにしよう。
@@ -168,6 +170,11 @@ namespace GachaWorkshop
                 //   詰まったらヒント集（Docs/HINTS.md）を見てください。
                 // ───────────────────────────────────────────────
 
+                if (item.rarity >= Rarity.SR)
+                {
+                    yield return effects.PlayOmen();
+                }
+                
                 ShowCard(item, result.isNew);   // カードを表示（用意済み）
                 PlayResultEffect(item.rarity);  // レアリティに合わせた演出（TODO①はこの中）
                 AddSummaryIcon(item);           // 履歴に小さく追加（用意済み）
@@ -213,8 +220,23 @@ namespace GachaWorkshop
             //   詰まったらヒント集（Docs/HINTS.md）を見てください。
             // ───────────────────────────────────────────────
 
-            effects.PlayCommon(); // ← いまは全部これで演出を発生させている状態。まずはここを書き換えよう
+
+            switch(rarity)
+            {
+                case Rarity.R:
+                    effects.PlayCommon();
+                    break;
+                case Rarity.SR:
+                    effects.PlayRare();
+                    break;
+                case Rarity.SSR:
+                    effects.PlaySpecial();
+                    break;
+
+            }
         }
+
+
 
         // ──────────── ここから下は表示まわり（用意済み・編集不要）────────────
 
