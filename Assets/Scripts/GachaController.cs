@@ -167,6 +167,9 @@ namespace GachaWorkshop
                 //   問題文は課題シート（Docs/EXERCISES.md）、
                 //   詰まったらヒント集（Docs/HINTS.md）を見てください。
                 // ───────────────────────────────────────────────
+                if (item.rarity >= Rarity.SR){
+                    yield return effects.PlayOmen();
+                }
 
                 ShowCard(item, result.isNew);   // カードを表示（用意済み）
                 PlayResultEffect(item.rarity);  // レアリティに合わせた演出（TODO①はこの中）
